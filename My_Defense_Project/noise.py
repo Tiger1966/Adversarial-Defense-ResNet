@@ -1,5 +1,9 @@
+# Based on code by kuangliu: https://github.com/kuangliu/pytorch-cifar
+# Core defense logic (Gaussian Noise Injection) implemented by Tiger1966
+# 本实验基础训练框架参考了 pytorch-cifar，核心防御逻辑由本人独立实现。
+
 '''
-文件名: train_noise.py
+文件名: noise.py
 功能: 在训练过程中加入高斯噪声，训练一个鲁棒性更强的新模型 (Model B)
 核心机制：在加载图片时，动态注入高斯噪声，让模型在训练时就习惯这种噪声，从而在测试时表现更好。
 '''
@@ -129,4 +133,5 @@ if __name__ == '__main__':
     for epoch in range(start_epoch, start_epoch+200):
         train(epoch)
         test(epoch)
+
         scheduler.step()
