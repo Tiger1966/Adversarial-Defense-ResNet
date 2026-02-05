@@ -1,3 +1,6 @@
+# Origin code by kuangliu: https://github.com/kuangliu/pytorch-cifar
+# Used for training the baseline model (Model A).
+
 '''Train CIFAR10 with PyTorch.'''
 import torch
 import torch.nn as nn
