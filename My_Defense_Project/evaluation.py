@@ -1,5 +1,9 @@
+# Based on code by kuangliu: https://github.com/kuangliu/pytorch-cifar
+# Attack (FGSM/PGD) and Defense (Soft Voting) logic integrated and implemented by Tiger1966
+# 对抗攻击与软投票防御评测逻辑由本人基于标准算法实现。
+
 '''
-文件名: final_evaluation.py
+文件名: evaluation.py
 功能: 对比评估 Clean Model 和 Noise Model 在 FGSM/PGD 攻击下的表现及防御效果
 '''
 import torch
@@ -168,4 +172,5 @@ if __name__ == '__main__':
     evaluate_model("Model A (Clean)", "./checkpoint/resnet18_clean.pth")
     
     # 评测模型 B (你刚练好的噪声模型)
+
     evaluate_model("Model B (Noise)", "./checkpoint/resnet18_noise.pth")
