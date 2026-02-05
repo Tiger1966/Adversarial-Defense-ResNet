@@ -17,7 +17,7 @@ import os
 # ================= 配置区域 =================
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 BATCH_SIZE = 100
-TEST_BATCH_LIMIT = 20  # 为了节省时间，我们只测前20个Batch(2000张图)，足够出结果了
+TEST_BATCH_LIMIT = 20  # 为了节省时间，我们只测前20个Batch(2000张图)
 
 # 攻击参数 (PGD是强攻击，Epsilon设大一点效果明显)
 EPSILON = 0.03       # 扰动大小 (8/255 左右)
@@ -72,7 +72,6 @@ def pgd_attack(model, images, labels, eps, alpha, steps):
         adv_images = original_images + delta
         
         # 这里的 clip 理论上应该 clip 到 [0,1] 的反归一化空间，
-        # 但为了简化，我们在 Normalization 后的空间操作，不再做硬截断，这在学术实验中是允许的。
         
     return adv_images.detach()
 
@@ -168,9 +167,10 @@ def evaluate_model(model_name, model_path):
     print("------------------------------------------------")
 
 if __name__ == '__main__':
-    # 评测模型 A (你的原始模型)
+    # 评测模型 A 
     evaluate_model("Model A (Clean)", "./checkpoint/resnet18_clean.pth")
     
-    # 评测模型 B (你刚练好的噪声模型)
+    # 评测模型 B 
 
     evaluate_model("Model B (Noise)", "./checkpoint/resnet18_noise.pth")
+
