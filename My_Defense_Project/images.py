@@ -60,5 +60,6 @@ plt.axis('off')
 
 plt.tight_layout()
 plt.savefig('visualization.png', dpi=300)
-print("图片已生成：visualization.png，请插入Word报告！")
+print("图片已生成：visualization.png")
+
 plt.show()
