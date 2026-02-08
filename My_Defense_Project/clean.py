@@ -14,15 +14,15 @@ import torchvision.transforms as transforms
 import os
 import argparse
 
-from models import *
-from utils import progress_bar
+from models import *   #从当前文件夹下的models文件夹导入所有模型
+from utils import progress_bar  #从utils.py导入进度条工具
 
 
-#参数解释器
+#参数解释器：可以再命令好运行时改变参数
 parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training')
 parser.add_argument('--lr', default=0.1, type=float, help='learning rate')  #学习率
 parser.add_argument('--resume', '-r', action='store_true',
-                    help='resume from checkpoint')
+                    help='resume from checkpoint')   #从之前的断点接着训练
 args = parser.parse_args()
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
